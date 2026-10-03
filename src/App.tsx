@@ -138,7 +138,7 @@ export function App() {
     setRateModalOpen(true);
   };
 
-  if (isLoading && !currentUser) {
+  if (!currentUser) {
     return (
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center text-white space-y-4">
         <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center animate-pulse">

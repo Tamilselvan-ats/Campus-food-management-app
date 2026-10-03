@@ -1,5 +1,5 @@
-import { Router, Request, Response } from 'express';
-import { db, getIsoDate, MealSlot } from './db';
+import { Router, type Request, type Response } from 'express';
+import { db, getIsoDate, type MealSlot } from './db.ts';
 
 export const apiRouter = Router();
 

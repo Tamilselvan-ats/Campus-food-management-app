@@ -103,9 +103,13 @@ export interface DatabaseSchema {
 const DB_DIR = path.resolve(process.cwd(), 'data');
 const DB_FILE = path.join(DB_DIR, 'mess_db.json');
 
-// Ensure directory exists
-if (!fs.existsSync(DB_DIR)) {
-  fs.mkdirSync(DB_DIR, { recursive: true });
+// Ensure directory exists safely (supports read-only container filesystems)
+try {
+  if (!fs.existsSync(DB_DIR)) {
+    fs.mkdirSync(DB_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Running with in-memory database (filesystem is read-only):', err);
 }
 
 // Generate dates helper around today
